@@ -42,6 +42,21 @@ uint64_t jenkins(const std::string& str)
 	return hash;
 }
 
+// Implementation of the DJB hash
+uint64_t djb(const std::string& str)
+{
+	uint64_t hash = 5381;
+
+	// mix in each octet
+	for (auto oct : str)
+	{
+		hash += hash << 5;
+		hash += oct;
+	}
+
+	return hash;
+}
+
 void print_res(const std::string name, uint64_t hash)
 {
 	std::cout << std::setw(20) << std::setfill(' ') << name;
@@ -55,6 +70,7 @@ void print_hash(const std::string& str)
 	std::cout << '\n' << str << std::endl;
 	print_res("FNV", fnv(str));
 	print_res("Jenkins", jenkins(str));
+	print_res("DJB", djb(str));
 }
 
 extern "C"
