@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
 
 // an implementation of the FNV 1A hash function, as described at
@@ -41,11 +42,19 @@ uint64_t jenkins(const std::string& str)
 	return hash;
 }
 
+void print_res(const std::string name, uint64_t hash)
+{
+	std::cout << std::setw(20) << std::setfill(' ') << name;
+	std::cout << " : ";
+	std::cout << std::hex << std::setw(16) << std::setfill('0') << 
+		hash << std::endl;
+}
+
 void print_hash(const std::string& str)
 {
 	std::cout << '\n' << str << std::endl;
-	std::cout << "     FNV: " << std::hex << fnv(str) << std::endl;
-	std::cout << " jenkins: " << std::hex << jenkins(str) << std::endl;
+	print_res("FNV", fnv(str));
+	print_res("Jenkins", jenkins(str));
 }
 
 extern "C"
