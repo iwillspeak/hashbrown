@@ -4,7 +4,7 @@ directory bin_dir
 
 test_exe = File.join(bin_dir, 'hash-brown')
 cpp_files = FileList['*.cpp']
-file test_exe => [ cpp_files, bin_dir] do
+file test_exe => cpp_files + [bin_dir] do
   sh %{clang++ --std=c++11 -o #{test_exe} #{cpp_files}}
 end
 
