@@ -18,4 +18,3 @@ uint64_t fnv(const std::string& str)
 
 	return hash;
 }
-

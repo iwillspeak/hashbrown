@@ -5,6 +5,7 @@
 uint64_t fnv(const std::string& str);
 uint64_t jenkins(const std::string& str);
 uint64_t djb(const std::string& str);
+uint64_t lose_lose(const std::string& str);
 
 void print_res(const std::string name, uint64_t hash)
 {
@@ -21,6 +22,7 @@ void print_hash(const std::string& str)
 	print_res("FNV", fnv(str));
 	print_res("Jenkins", jenkins(str));
 	print_res("DJB", djb(str));
+	print_res("lose_lose", lose_lose(str));
 }
 
 extern "C"
